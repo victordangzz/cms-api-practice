@@ -1,0 +1,25 @@
+{
+  // Bật auto format khi lưu
+  "editor.formatOnSave": true,
+
+  // Chọn Prettier làm formatter mặc định
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Format cho TypeScript
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Format cho React + TypeScript
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // (tùy chọn) cho JS và JSX
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
