@@ -1,5 +1,5 @@
-import HTTP_STATUS_CODE from '../constants/httpStatusCode'
-import { ErrorsEntity, ErrorsWithStatus } from '../models/Errors'
+import HTTP_STATUS_CODE from '@/constants/httpStatusCode'
+import { ErrorsEntity, ErrorsWithStatus } from '@/models/Errors'
 import { Request, Response, NextFunction } from 'express'
 import { ValidationChain, validationResult } from 'express-validator'
 import { RunnableValidationChains } from 'express-validator/lib/middlewares/schema'

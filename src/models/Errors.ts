@@ -1,5 +1,5 @@
-import HTTP_STATUS_CODE from '../constants/httpStatusCode'
-import MSG from '../constants/messages'
+import HTTP_STATUS_CODE from '@/constants/httpStatusCode'
+import MSG from '@/constants/messages'
 
 type ErrorsType = Record<
   string,

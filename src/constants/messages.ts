@@ -1,6 +1,7 @@
 const MSG = {
   VALIDATION_ERR: 'Validate error',
   EMAIL_IS_REQUIRED: 'Email là bắt buộc',
+  EMAIL_NOT_FOUND: 'Email không tồn tại',
   EMAIL_MUST_BE_STRING: 'Email phải là dạng chuỗi ký tự',
   EMAIL_LENGTH: 'Email có độ dài từ 5 đến 160 ký tự',
   EMAIL_INVALID: 'Email chưa đúng định dạng',

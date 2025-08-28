@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { TokenPayLoad } from "./models/requests/user.request";
+import { TokenPayLoad } from "@/models/requests/user.request";
 import { User } from "@prisma/client";
 
 

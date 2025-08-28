@@ -1,7 +1,6 @@
-import { JwtPayload } from "jsonwebtoken";
-import { UserVerifyStatus } from "@prisma/client";
-import { TokenType } from "../../constants/enum";
-
+import { JwtPayload } from 'jsonwebtoken'
+import { UserVerifyStatus } from '@prisma/client'
+import { TokenType } from '@/constants/enum'
 
 export interface TokenPayLoad extends JwtPayload {
   user_id: number
@@ -12,14 +11,14 @@ export interface TokenPayLoad extends JwtPayload {
 }
 
 export interface CreateUserRequest {
-  email: string;
-  name: string;
-  password: string;
+  email: string
+  name: string
+  password: string
 }
-export interface RegisterUserRequest extends CreateUserRequest {
-  confirmPassword: string;
+export interface UserRegisterReqBody extends CreateUserRequest {
+  confirmPassword: string
 }
-export interface LoginUserRequest {
-  email: string;
-  password: string;
+export interface UserLoginReqBody {
+  email: string
+  password: string
 }

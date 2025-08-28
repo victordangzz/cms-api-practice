@@ -21,7 +21,20 @@ model User{
   email           String            @unique
   name            String
   password        String
-  verifyStatus    UserVerifyStatus  @default(Unverified)
+  refreshTokens   RefreshToken[]
+  verifyStatus    UserVerifyStatus  @default(Unverified) 
   createdAt      DateTime          @default(now())
   updatedAt      DateTime          @updatedAt
+}
+
+model RefreshToken {
+  id      Int      @id @default(autoincrement())
+  token   String   @unique @db.VarChar(512)
+  user_id Int
+  iat     DateTime
+  exp     DateTime
+  user    User     @relation(fields: [user_id], references: [id])
+
+  @@index([exp])
+  @@map("refresh_token")
 }
