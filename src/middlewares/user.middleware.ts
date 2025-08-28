@@ -5,6 +5,12 @@ import MSG from "../constants/messages";
 import userService from "../services/user.service";
 
 // Simple validate function
+// Ngay chỗ này tại sao lại viết func validate chỗ này trong khi đây là 1 hàm dùng cho rất nhiều và rất nhiều req middleware mà em?
+// Cái lỗi tiếp theo dùng any không phải là xấu như em đang cố ép nó để nó passing qua Typescript validate validation: any chỗ này có rất nhiều rủi ro nếu truyền sai sẽ ăn quả BUG ngay chỗ này
+// Giải pháp nên tách hàm này ra một file utils/ nhen 
+// Tiếp theo là ngay chỗ này validation: RunnableValidationChains<ValidationChain> nó sẽ có kiểu như thế này em nhen còn nếu e k rõ em có thể lên Typescript Sheet lần mò hoặc dùng stack overflow để check lại kiểu ngen hoặc sâu hơn thì em nên đọc cái docs của nó có nói về Validation Chain á em.
+// cái tiếp theo là đường dẫn nên chú ý sao cho gọn nhất có thể chứ đừng có ../ hoặc ../../ hoặc ../../../ không hay và nhìn rất rối em nha
+// Chỗ đường dẫn này a recommend em dùng cái allias path typescript để a đi làm lại a sẽ nói rõ chỗ này và nó chỉ là custom đường dẫn thôi.
 const validate = (validation: any) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     await validation.run(req)
