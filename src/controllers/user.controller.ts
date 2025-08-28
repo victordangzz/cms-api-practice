@@ -4,7 +4,7 @@ import { RegisterUserRequest } from '../models/requests/user.request'
 import { User } from '@prisma/client'
 import userService from '../services/user.service'
 import HTTP_STATUS_CODE from '../constants/httpStatusCode'
-
+// RegisterUserRequest ngay chỗ này nên ghi là Request gì nha em. EM đang ghi chung chung sau a rất khó maintain...
 export const registerUser = async (req: Request<ParamsDictionary, any, RegisterUserRequest>, res: Response) => {
   const payload = req.body
   const result = await userService.register(payload)
