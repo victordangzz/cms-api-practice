@@ -9,7 +9,7 @@ export interface TokenPayLoad extends JwtPayload {
   iat: number
   exp: number
 }
-
+// Mấy phần khai báo này nên tận dụng kế thừa trong interface sẽ gọn hơn và đỡ phải viết nhiều lần
 export interface CreateUserRequest {
   email: string
   name: string
