@@ -25,6 +25,7 @@ model User{
   verifyStatus    UserVerifyStatus  @default(Unverified) 
   createdAt      DateTime          @default(now())
   updatedAt      DateTime          @updatedAt
+  Blog Blog[]
 }
 
 model RefreshToken {
@@ -33,8 +34,23 @@ model RefreshToken {
   user_id Int
   iat     DateTime
   exp     DateTime
-  user    User     @relation(fields: [user_id], references: [id])
-
+  user    User     @relation(fields: [user_id], references: [id],  onDelete: Cascade, onUpdate: Cascade)
+  
+  @@index([user_id])     // tìm token theo user nhanh hơn
   @@index([exp])
   @@map("refresh_token")
+}
+
+model Blog {
+  id         Int         @id @default(autoincrement())
+  title      String
+  content    String
+  authorId   Int
+  author     User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@index([authorId])
+  @@index([createdAt, id]) // phục vụ keyset/ORDER BY nhanh
+  @@map("blog")
 }

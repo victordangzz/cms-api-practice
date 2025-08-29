@@ -18,7 +18,19 @@ const MSG = {
   NAME_MUST_BE_STRING: 'Họ và tên phải là dạng chuỗi',
   NAME_LENGTH: 'Họ và tên có độ dài từ 3 đến 160 ký tự',
   USER_NOT_FOUND: 'Người dùng không tồn tại',
-  INVALID_PASSWORD: 'Mật khẩu không chính xác'
+  INVALID_PASSWORD: 'Mật khẩu không chính xác',
+  ACCESS_TOKEN_IS_REQUIRED: 'Access token là bắt buộc',
+  TITLE_IS_REQUIRED: 'Tiêu đề là bắt buộc',
+  CONTENT_IS_REQUIRED: 'Nội dung là bắt buộc',
+  TITLE_MUST_BE_STRING: 'Tiêu đề phải là dạng chuỗi',
+  CONTENT_MUST_BE_STRING: 'Nội dung phải là dạng chuỗi',
+  TITLE_LENGTH: 'Tiêu đề có độ dài từ 5 đến 100 ký tự',
+  CONTENT_LENGTH: 'Nội dung có độ dài từ 10 đến 5000 ký tự',
+  UPDATE_ACTIVITY_SUCCESS: 'Cập nhật bài viết thành công',
+  BLOG_NOT_FOUND: 'Bài viết không tồn tại',
+  CREATE_ACTIVITY_SUCCESS: 'Tạo bài viết thành công',
+  DELETE_ACTIVITY_SUCCESS: 'Xóa bài viết thành công',
+  GET_LIST_BLOG_SUCCESS: 'Lấy danh sách bài viết thành công'
 } as const
 
 export default MSG

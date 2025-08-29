@@ -3,6 +3,7 @@ import cors from 'cors'
 import { CONFIG_ENV } from '@/constants/config'
 import { PREFIX_API } from '@/constants/path'
 import userRouter from '@/routes/user.route'
+import blogRouter from '@/routes/blog.route'
 import { defaultErrorHandle } from '@/middlewares/errors.middleware'
 
 // Thứ nhất là ngay chỗ này cú pháp process.env.PORT không sai.
@@ -18,6 +19,7 @@ app.use(
 )
 app.use(express.json())
 app.use(PREFIX_API, userRouter)
+app.use(PREFIX_API, blogRouter) 
 app.use(defaultErrorHandle) // Đặt sau tất cả các route và middleware khác
 app.listen(port, () => {
   console.log(`🚀 Server API running on ${CONFIG_ENV.STATUS} with port ${port}`)
