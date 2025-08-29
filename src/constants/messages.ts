@@ -30,7 +30,10 @@ const MSG = {
   BLOG_NOT_FOUND: 'Bài viết không tồn tại',
   CREATE_ACTIVITY_SUCCESS: 'Tạo bài viết thành công',
   DELETE_ACTIVITY_SUCCESS: 'Xóa bài viết thành công',
-  GET_LIST_BLOG_SUCCESS: 'Lấy danh sách bài viết thành công'
+  GET_LIST_BLOG_SUCCESS: 'Lấy danh sách bài viết thành công',
+  ID_MUST_BE_INT: 'ID phải là số nguyên',
+  ID_IS_REQUIRED: 'ID là bắt buộc',
+  
 } as const
 
 export default MSG

@@ -4,7 +4,7 @@ import prismaService from './prisma.service'
 import MSG from '@/constants/messages'
 import { update } from 'lodash'
 import { LIMIT, PAGE } from '@/constants/pagination'
-
+import { filterPayload } from '@/utils/common'
 interface CreateBlogServicePayload {
   payload: CreateBlogReqBody
   user_id: number
@@ -25,27 +25,23 @@ class BlogService {
       message: MSG.CREATE_ACTIVITY_SUCCESS
     }
   }
-  async isBlogExist({ id, user_id }: { id: number; user_id: number }) {
+  async isBlogExist({ id }: { id: number }) {
     const blog = await prismaService.blog.findUnique({
       where: {
-        id,
-        authorId: user_id
+        id
       }
     })
     return Boolean(blog)
   }
-  async updateBlogService({ payload, user_id }: UpdateBlogServicePayload) {
+  async updateBlogService({ payload, user_id }: UpdateBlogServicePayload, id_blog: number) {
+    const filteredPayload = filterPayload(payload)
     const _payload = {
-      ...payload,
+      ...filteredPayload,
       updatedAt: new Date()
-    }
-    const isExist = await this.isBlogExist({ id: payload.id, user_id })
-    if (!isExist) {
-      throw new Error(MSG.BLOG_NOT_FOUND)
     }
     await prismaService.blog.update({
       where: {
-        id: payload.id,
+        id: id_blog,
         authorId: user_id
       },
       data: {
@@ -57,17 +53,13 @@ class BlogService {
     }
   }
   async deleteBlogService(payload: { id: number; user_id: number }) {
-    const isExist = await this.isBlogExist({ id: payload.id, user_id: payload.user_id })
-    if (!isExist) {
-      throw new Error(MSG.BLOG_NOT_FOUND)
-    }
     console.log('payload:', payload)
-    // await prismaService.blog.delete({
-    //   where: {
-    //     id: payload.id,
-    //     authorId: payload.user_id
-    //   }
-    // })
+    await prismaService.blog.delete({
+      where: {
+        id: payload.id,
+        authorId: payload.user_id
+      }
+    })
     return {
       message: MSG.DELETE_ACTIVITY_SUCCESS
     }
@@ -86,8 +78,8 @@ class BlogService {
       }),
       prismaService.blog.count()
     ])
-   
-     return {
+
+    return {
       blogs,
       totalBlogs,
       page,

@@ -8,8 +8,6 @@ import { CreateBlogReqBody } from '@/models/requests/blog.request'
 import blogService from '@/services/blog.service'
 import MSG from '@/constants/messages'
 
-// chưa xoá log
-
 export const createBlogController = async (req: Request<ParamsDictionary, any, CreateBlogReqBody>, res: Response) => {
   const { user_id } = req.decode_authorization as TokenPayLoad
   const payload = req.body
@@ -19,15 +17,14 @@ export const createBlogController = async (req: Request<ParamsDictionary, any, C
 
 export const updateBlogController = async (req: Request<ParamsDictionary, any, CreateBlogReqBody>, res: Response) => {
   const { user_id } = req.decode_authorization as TokenPayLoad
+  const id_blog = Number(req.params?.id)
   const payload = req.body
-  console.log(payload)
-  const result = await blogService.updateBlogService({ payload, user_id })
-  console.log(result)
+  const result = await blogService.updateBlogService({ payload, user_id }, id_blog)
   res.status(HTTP_STATUS_CODE.OK).json(result)
 }
 export const deleteBlogController = async (req: Request<ParamsDictionary, any, { id: number }>, res: Response) => {
   const { user_id } = req.decode_authorization as TokenPayLoad
-  const { id } = req.body
+  const id = Number(req.params?.id)
   const result = await blogService.deleteBlogService({ id, user_id })
   res.status(HTTP_STATUS_CODE.OK).json(result)
 }

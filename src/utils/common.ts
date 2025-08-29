@@ -30,3 +30,14 @@ export function convertToSeconds(exp: string): number {
       throw new Error(`Unsupported unit: ${unit}`)
   }
 }
+
+
+export function filterPayload<T extends Record<string, any>>(payload: T): T {
+  for (const key in payload) {
+    const value = payload[key]
+    if (value === undefined || value === null || value === '') {
+      delete payload[key]
+    }
+  }
+  return payload
+}
