@@ -7,6 +7,9 @@ import HTTP_STATUS_CODE from '@/constants/httpStatusCode'
 import { CreateBlogReqBody } from '@/models/requests/blog.request'
 import blogService from '@/services/blog.service'
 import MSG from '@/constants/messages'
+
+// chưa xoá log
+
 export const createBlogController = async (req: Request<ParamsDictionary, any, CreateBlogReqBody>, res: Response) => {
   const { user_id } = req.decode_authorization as TokenPayLoad
   const payload = req.body
